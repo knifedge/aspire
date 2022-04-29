@@ -1,8 +1,9 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {Dimensions, StyleSheet, View} from 'react-native';
+import {Logo} from '../../assets/icons';
 import {Text} from '../../components/Text';
-import {BorderRadius, Colors, Spacing} from '../../constants';
+import {BorderRadius, Colors, IconSize, Spacing} from '../../constants';
 const {height, width} = Dimensions.get('window');
 
 const BALANCE = 3000;
@@ -12,6 +13,7 @@ export const CardHeader = () => (
       <Text size="l" weight="bold" varient="light">
         Debit Card
       </Text>
+      <Logo style={{...IconSize.l, position: 'absolute', right: Spacing.m}} />
     </View>
 
     <Text style={styles.balanceDescription}>Available balance</Text>
