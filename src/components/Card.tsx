@@ -41,6 +41,7 @@ const CardNumber = ({showCardNumber}: {showCardNumber: boolean}) => {
           data={[1, 2, 3, 4]}
           horizontal
           keyExtractor={item => item.toString()}
+          contentContainerStyle={{alignItems: 'center'}}
           renderItem={renderItems}
         />
       </View>
