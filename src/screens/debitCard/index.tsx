@@ -1,6 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {memo, useState} from 'react';
-import {Dimensions, SafeAreaView, StyleSheet} from 'react-native';
+import {Dimensions, StyleSheet} from 'react-native';
+import ViewWrapper from '../../components/ViewWrapper';
 import {BorderRadius, Colors, Spacing} from '../../constants';
 import CardInfo from './CardInfo';
 import {CardHeader} from './Header';
@@ -23,7 +24,7 @@ const CardSetting = () => {
   }
 
   return (
-    <SafeAreaView style={styles.wrapper}>
+    <ViewWrapper>
       <CardHeader />
       <DebitContext.Provider
         value={{
@@ -32,7 +33,7 @@ const CardSetting = () => {
         }}>
         <CardInfo />
       </DebitContext.Provider>
-    </SafeAreaView>
+    </ViewWrapper>
   );
 };
 

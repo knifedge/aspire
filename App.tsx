@@ -9,20 +9,22 @@
  */
 
 import {NavigationContainer} from '@react-navigation/native';
-import React, {createContext} from 'react';
+import React, {createContext, useState} from 'react';
 import {initialState} from './src/initialState';
-import Tabs from './src/navigation';
+import RegisteredScreens from './src/navigation';
 
-export const AppContext = createContext(initialState);
+export const AppContext: any = createContext(initialState);
 
 const App = () => {
+  const [debitSpendLimit, setDebitSpendLimit] = useState(345);
   return (
     <NavigationContainer>
       <AppContext.Provider
         value={{
-          debitSpendLimit: 345,
+          debitSpendLimit,
+          setDebitSpendLimit,
         }}>
-        <Tabs />
+        <RegisteredScreens />
       </AppContext.Provider>
     </NavigationContainer>
   );

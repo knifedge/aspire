@@ -1,21 +1,15 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {Dimensions, StyleSheet, View} from 'react-native';
-import {Logo} from '../../assets/icons';
+import {Header} from '../../components/Header';
 import {Text} from '../../components/Text';
-import {BorderRadius, Colors, IconSize, Spacing} from '../../constants';
+import {BorderRadius, Colors, Spacing} from '../../constants';
 const {height, width} = Dimensions.get('window');
 
 const BALANCE = 3000;
 export const CardHeader = () => (
   <View style={{padding: Spacing.l}}>
-    <View>
-      <Text size="l" weight="bold" varient="light">
-        Debit Card
-      </Text>
-      <Logo style={{...IconSize.l, position: 'absolute', right: Spacing.m}} />
-    </View>
-
+    <Header title={'Debit Card'} />
     <Text style={styles.balanceDescription}>Available balance</Text>
     <View style={{flexDirection: 'row'}}>
       <View style={styles.balanceContainer}>

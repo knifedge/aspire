@@ -34,9 +34,16 @@ export const IconSize = {
     height: 8,
     width: 8,
   },
-  s: {},
+  s: {
+    height: 16,
+    width: 16,
+  },
   l: {
     height: 24,
     width: 24,
+  },
+  xl: {
+    height: 32,
+    width: 32,
   },
 };

@@ -1,6 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
+import {useNavigation} from '@react-navigation/native';
 import React, {memo, useContext} from 'react';
-import {Dimensions, FlatList, StyleSheet, View} from 'react-native';
+import {Dimensions, FlatList, Pressable, StyleSheet, View} from 'react-native';
 import {DebitContext} from '.';
 import {
   Card,
@@ -12,7 +13,8 @@ import {
 import DebitCard from '../../components/Card';
 import {Text} from '../../components/Text';
 import Toggle from '../../components/Toggle';
-import {Colors} from '../../constants';
+import {Colors, IconSize} from '../../constants';
+import {ScreenNames} from '../../screenenum';
 import {ExpenseSummary} from './ExpenseSummary';
 const {height, width} = Dimensions.get('window');
 
@@ -24,17 +26,17 @@ interface ISectionItem {
 }
 
 const CardInfo = () => {
-  const {toggleSpendLimit} = useContext(DebitContext);
+  const {toggleSpendLimit}: any = useContext(DebitContext);
 
   const SECTIONS: Array<ISectionItem> = [
     {
-      icon: () => <Insight style={{height: 32, width: 32}} />,
+      icon: () => <Insight style={{...IconSize.xl}} />,
       title: 'Top-up account',
       description: 'Deposit money to your account to use with card',
       rightIcon: () => <></>,
     },
     {
-      icon: () => <Transfercolored style={{height: 32, width: 32}} />,
+      icon: () => <Transfercolored style={{...IconSize.xl}} />,
       title: 'Weekly spending limit',
       description: 'You haven’t set any spending limit on card',
       rightIcon: () => (
@@ -46,28 +48,34 @@ const CardInfo = () => {
       ),
     },
     {
-      icon: () => <Transfer style={{height: 32, width: 32}} />,
+      icon: () => <Transfer style={{...IconSize.xl}} />,
       title: 'Freeze card',
       description: 'Your debit card is currently active',
       rightIcon: () => <Toggle onToggle={() => {}} />,
     },
     {
-      icon: () => <Card style={{height: 32, width: 32}} />,
+      icon: () => <Card style={{...IconSize.xl}} />,
       title: 'Get a new card',
       description: 'This deactivates your current debit card',
       rightIcon: () => <></>,
     },
     {
-      icon: () => <Deactivate style={{height: 32, width: 32}} />,
+      icon: () => <Deactivate style={{...IconSize.xl}} />,
       title: 'Deactivated cards',
       description: 'Your previously deactivated cards',
       rightIcon: () => <></>,
     },
   ];
 
+  const navigation: any = useNavigation();
+
   const renderItems = ({item}: {item: ISectionItem}) => (
     <View style={styles.menuWrapper}>
-      <View style={styles.menuItem}>
+      <Pressable
+        onPress={() => {
+          navigation.navigate(ScreenNames.LimitSetting, {});
+        }}
+        style={styles.menuItem}>
         {item.icon()}
         <View style={{marginHorizontal: 16}}>
           <Text size="s" varient="dark">
@@ -77,10 +85,11 @@ const CardInfo = () => {
             {item.description}
           </Text>
         </View>
-      </View>
+      </Pressable>
       <View>{item.rightIcon()}</View>
     </View>
   );
+
   return (
     <View style={styles.scrollContainer}>
       <DebitCard style={{top: '-8%'}} />

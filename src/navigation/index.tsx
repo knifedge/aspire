@@ -1,11 +1,14 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
 import {View} from 'react-native';
 import {Credit, Home, Pay, Payments, User} from '../assets/icons';
 import {Colors, IconSize} from '../constants';
 import {ScreenNames} from '../screenenum';
 import CardSetting from '../screens/debitCard';
+import LimitSetter from '../screens/limitSetting';
 const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
 
 const DummyScreen0 = () => <View />;
 const DummyScreen1 = () => <View />;
@@ -56,4 +59,13 @@ const Tabs = () => (
   </Tab.Navigator>
 );
 
-export default Tabs;
+const RegisteredScreens = () => (
+  <Stack.Navigator
+    screenOptions={{headerShown: false}}
+    initialRouteName={ScreenNames.Main}>
+    <Stack.Screen name={ScreenNames.Main} component={Tabs} />
+    <Stack.Screen name={ScreenNames.LimitSetting} component={LimitSetter} />
+  </Stack.Navigator>
+);
+
+export default RegisteredScreens;
