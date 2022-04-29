@@ -19,6 +19,7 @@ import {ExpenseSummary} from './ExpenseSummary';
 const {height, width} = Dimensions.get('window');
 
 interface ISectionItem {
+  id: number;
   icon: () => JSX.Element;
   title: string;
   description: string;
@@ -30,12 +31,14 @@ const CardInfo = () => {
 
   const SECTIONS: Array<ISectionItem> = [
     {
+      id: 1,
       icon: () => <Insight style={{...IconSize.xl}} />,
       title: 'Top-up account',
       description: 'Deposit money to your account to use with card',
       rightIcon: () => <></>,
     },
     {
+      id: 2,
       icon: () => <Transfercolored style={{...IconSize.xl}} />,
       title: 'Weekly spending limit',
       description: 'You haven’t set any spending limit on card',
@@ -48,18 +51,21 @@ const CardInfo = () => {
       ),
     },
     {
+      id: 3,
       icon: () => <Transfer style={{...IconSize.xl}} />,
       title: 'Freeze card',
       description: 'Your debit card is currently active',
       rightIcon: () => <Toggle onToggle={() => {}} />,
     },
     {
+      id: 4,
       icon: () => <Card style={{...IconSize.xl}} />,
       title: 'Get a new card',
       description: 'This deactivates your current debit card',
       rightIcon: () => <></>,
     },
     {
+      id: 5,
       icon: () => <Deactivate style={{...IconSize.xl}} />,
       title: 'Deactivated cards',
       description: 'Your previously deactivated cards',
@@ -73,7 +79,9 @@ const CardInfo = () => {
     <View style={styles.menuWrapper}>
       <Pressable
         onPress={() => {
-          navigation.navigate(ScreenNames.LimitSetting, {});
+          if (item.id === 2) {
+            navigation.navigate(ScreenNames.LimitSetting, {});
+          }
         }}
         style={styles.menuItem}>
         {item.icon()}

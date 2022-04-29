@@ -62,6 +62,7 @@ const LimitSetter = () => {
           <TextInput
             value={limit}
             style={styles.textInput}
+            placeholder={limit.toString()}
             onChangeText={text => {
               setLimit(text);
             }}
