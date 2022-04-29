@@ -13,7 +13,9 @@ const Stack = createNativeStackNavigator();
 
 const PlaceHolder = () => (
   <ViewWrapper>
-    <Text style={{alignSelf: 'center', top: '50%'}}>Content Coming Soon</Text>
+    <Text weight="bold" size="l" style={{alignSelf: 'center', top: '50%'}}>
+      Content Coming Soon
+    </Text>
   </ViewWrapper>
 );
 const DummyScreen0 = () => <PlaceHolder />;
