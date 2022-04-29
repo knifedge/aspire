@@ -1,11 +1,14 @@
 import React, {useContext} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {DebitContext} from '.';
+import {AppContext} from '../../../App';
 import {Text} from '../../components/Text';
 import {BorderRadius, Colors, Spacing} from '../../constants';
 
 export const ExpenseSummary = () => {
-  const {isSpendLimitSet, spendLimit} = useContext(DebitContext);
+  const {isSpendLimitSet}: any = useContext(DebitContext);
+  const {debitSpendLimit} = useContext(AppContext);
+
   if (!isSpendLimitSet) {
     return <></>;
   }
@@ -14,7 +17,7 @@ export const ExpenseSummary = () => {
       <View style={styles.header}>
         <Text varient="dark">Debit card spending limit</Text>
         <Text varient="secondary">
-          ${spendLimit} <Text varient="grey">| $5,000</Text>{' '}
+          ${debitSpendLimit} <Text varient="grey">| $5,000</Text>{' '}
         </Text>
       </View>
       <View style={styles.progressContainer}>

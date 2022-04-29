@@ -9,13 +9,21 @@
  */
 
 import {NavigationContainer} from '@react-navigation/native';
-import React from 'react';
+import React, {createContext} from 'react';
+import {initialState} from './src/initialState';
 import Tabs from './src/navigation';
+
+export const AppContext = createContext(initialState);
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Tabs />
+      <AppContext.Provider
+        value={{
+          debitSpendLimit: 345,
+        }}>
+        <Tabs />
+      </AppContext.Provider>
     </NavigationContainer>
   );
 };

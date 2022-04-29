@@ -6,17 +6,17 @@ import CardInfo from './CardInfo';
 import {CardHeader} from './Header';
 const {height, width} = Dimensions.get('window');
 
-export const DebitContext = React.createContext<any>({
-  spendLimit: 0,
+interface IDebitToggles {
+  isSpendLimitSet: boolean;
+  toggleSpendLimit?: () => void;
+}
+
+export const DebitContext = React.createContext<IDebitToggles | null>({
+  isSpendLimitSet: false,
 });
 
 const CardSetting = () => {
-  const [spendLimit, setSpendLimit] = useState(0);
   const [isSpendLimitSet, toggleLimit] = useState(false);
-
-  function handleSpendLimit(value: number) {
-    setSpendLimit(value);
-  }
 
   function toggleSpendLimit() {
     toggleLimit(!isSpendLimitSet);
@@ -27,10 +27,8 @@ const CardSetting = () => {
       <CardHeader />
       <DebitContext.Provider
         value={{
-          spendLimit,
           isSpendLimitSet,
           toggleSpendLimit,
-          handleSpendLimit,
         }}>
         <CardInfo />
       </DebitContext.Provider>
