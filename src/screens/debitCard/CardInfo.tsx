@@ -89,7 +89,11 @@ const CardInfo = () => {
           <Text size="s" varient="dark">
             {item.title}
           </Text>
-          <Text size="xs" varient="grey" style={{marginTop: 8}}>
+          <Text
+            numberOfLines={2}
+            size="xs"
+            varient="grey"
+            style={{marginTop: 8, maxWidth: 230}}>
             {item.description}
           </Text>
         </View>
@@ -130,7 +134,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   menuItem: {
-    height: 44,
+    height: 48,
     marginBottom: 16,
     flexDirection: 'row',
     alignItems: 'center',

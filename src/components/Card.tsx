@@ -86,9 +86,9 @@ const Card = ({style}: {style: ViewStyle}) => {
         }}
         style={styles.stickyToggle}>
         {showCardNumber ? (
-          <Hide style={{...IconSize.l}} />
+          <Hide style={{...IconSize.s}} />
         ) : (
-          <Eye style={{...IconSize.l}} />
+          <Eye style={{...IconSize.s}} />
         )}
         <Text varient="secondary">
           {showCardNumber ? 'Hide' : 'Show'} card number
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
   },
   stickyToggle: {
     height: 44,
-    width: 154,
+    width: 160,
     borderTopLeftRadius: BorderRadius.m,
     borderTopRightRadius: BorderRadius.m,
     backgroundColor: Colors.Light,
@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
     right: Spacing.s,
     top: -35,
     zIndex: -1,
-    // paddingHorizontal: Spacing.l,
+    paddingHorizontal: Spacing.s,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-around',

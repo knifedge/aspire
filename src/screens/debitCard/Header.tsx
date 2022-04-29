@@ -11,7 +11,7 @@ export const CardHeader = () => (
   <View style={{padding: Spacing.l}}>
     <Header title={'Debit Card'} />
     <Text style={styles.balanceDescription}>Available balance</Text>
-    <View style={{flexDirection: 'row'}}>
+    <View style={{flexDirection: 'row', alignItems: 'center'}}>
       <View style={styles.balanceContainer}>
         <Text>$$</Text>
       </View>

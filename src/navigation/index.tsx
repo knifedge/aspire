@@ -1,8 +1,9 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
-import {View} from 'react-native';
 import {Credit, Home, Pay, Payments, User} from '../assets/icons';
+import {Text} from '../components/Text';
+import ViewWrapper from '../components/ViewWrapper';
 import {Colors, IconSize} from '../constants';
 import {ScreenNames} from '../screenenum';
 import CardSetting from '../screens/debitCard';
@@ -10,10 +11,15 @@ import LimitSetter from '../screens/limitSetting';
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
-const DummyScreen0 = () => <View />;
-const DummyScreen1 = () => <View />;
-const DummyScreen2 = () => <View />;
-const DummyScreen3 = () => <View />;
+const PlaceHolder = () => (
+  <ViewWrapper>
+    <Text style={{alignSelf: 'center', top: '50%'}}>Content Coming Soon</Text>
+  </ViewWrapper>
+);
+const DummyScreen0 = () => <PlaceHolder />;
+const DummyScreen1 = () => <PlaceHolder />;
+const DummyScreen2 = () => <PlaceHolder />;
+const DummyScreen3 = () => <PlaceHolder />;
 
 const Tabs = () => (
   <Tab.Navigator

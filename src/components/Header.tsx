@@ -14,7 +14,13 @@ export const Header = ({title, rightComponent}: IHeader) => {
     <View>
       <View style={styles.navigationContainer}>
         {rightComponent}
-        <Logo style={{...IconSize.l, alignSelf: 'flex-end'}} />
+        <Logo
+          style={{
+            ...IconSize.l,
+            position: 'absolute',
+            right: 0,
+          }}
+        />
       </View>
       <Text size="l" weight="bold" varient="light">
         {title}
