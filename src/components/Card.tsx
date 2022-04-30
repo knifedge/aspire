@@ -16,8 +16,8 @@ const {width} = Dimensions.get('window');
 const CARD_NAME = 'Mark Henry';
 
 const CardNumber = ({showCardNumber}: {showCardNumber: boolean}) => {
-  const renderItems = ({item}: {item: number}) => {
-    if (item === 4) {
+  const renderItems = ({item, index}: {item: number}) => {
+    if (index === 3) {
       return (
         <View style={{flexDirection: 'row', marginRight: 8}}>
           <Text>2020</Text>
@@ -26,10 +26,9 @@ const CardNumber = ({showCardNumber}: {showCardNumber: boolean}) => {
     }
     return (
       <View style={{flexDirection: 'row', marginRight: 8}}>
-        <Dot />
-        <Dot />
-        <Dot />
-        <Dot />
+        {Array.from({length: 4}, (v, i) => i).map(() => (
+          <Dot />
+        ))}
       </View>
     );
   };
@@ -38,7 +37,7 @@ const CardNumber = ({showCardNumber}: {showCardNumber: boolean}) => {
     return (
       <View style={styles.cardNumber}>
         <FlatList
-          data={[1, 2, 3, 4]}
+          data={Array.from({length: 4}, (v, i) => i)}
           horizontal
           keyExtractor={item => item.toString()}
           contentContainerStyle={{alignItems: 'center'}}
