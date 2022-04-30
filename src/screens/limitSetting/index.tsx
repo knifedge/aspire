@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react-hooks/exhaustive-deps */
 import {useNavigation} from '@react-navigation/native';
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {
   Dimensions,
   Image,
@@ -12,6 +12,7 @@ import {
   View,
 } from 'react-native';
 import {AppContext} from '../../../App';
+import {Button} from '../../components/Button';
 import {CurrencyLogo} from '../../components/CurrencyLogo';
 import {Header} from '../../components/Header';
 import {Text} from '../../components/Text';
@@ -23,14 +24,9 @@ const MAX_LIMIT = 5000;
 const LimitSetter = () => {
   const navigation: any = useNavigation();
   //TODO: accept only number from the input field.
+
   const [limit, setLimit] = useState<any>(MAX_LIMIT);
   const {setDebitSpendLimit} = useContext(AppContext);
-
-  useEffect(() => {
-    if (limit < MAX_LIMIT) {
-      setDebitSpendLimit(limit);
-    }
-  }, [limit]);
 
   return (
     <ViewWrapper>
@@ -77,10 +73,18 @@ const LimitSetter = () => {
             }}
           />
         </View>
+
         <Text style={{marginVertical: Spacing.l}} varient="grey">
           Here weekly means the last 7 days - not the calendar week
         </Text>
       </Pressable>
+      <Button
+        title="Save"
+        disabled={Number.isInteger(limit)}
+        onPress={() => {
+          setDebitSpendLimit(limit);
+        }}
+      />
     </ViewWrapper>
   );
 };

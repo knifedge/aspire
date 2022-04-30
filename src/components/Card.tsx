@@ -16,7 +16,7 @@ const {width} = Dimensions.get('window');
 const CARD_NAME = 'Mark Henry';
 
 const CardNumber = ({showCardNumber}: {showCardNumber: boolean}) => {
-  const renderItems = ({item, index}: {item: number}) => {
+  const renderItems = ({item, index}: {item: number; index: number}) => {
     if (index === 3) {
       return (
         <View style={{flexDirection: 'row', marginRight: 8}}>
