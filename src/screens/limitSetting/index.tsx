@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react-hooks/exhaustive-deps */
 import {useNavigation} from '@react-navigation/native';
 import React, {useContext, useEffect, useState} from 'react';
@@ -11,6 +12,7 @@ import {
   View,
 } from 'react-native';
 import {AppContext} from '../../../App';
+import {CurrencyLogo} from '../../components/CurrencyLogo';
 import {Header} from '../../components/Header';
 import {Text} from '../../components/Text';
 import ViewWrapper from '../../components/ViewWrapper';
@@ -68,9 +70,12 @@ const LimitSetter = () => {
             }}
             keyboardType="number-pad"
           />
-          <View style={styles.balanceContainer}>
-            <Text>$$</Text>
-          </View>
+          <CurrencyLogo
+            style={{
+              position: 'absolute',
+              top: Spacing.xs,
+            }}
+          />
         </View>
         <Text style={{marginVertical: Spacing.l}} varient="grey">
           Here weekly means the last 7 days - not the calendar week

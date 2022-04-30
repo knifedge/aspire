@@ -1,6 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {Dimensions, StyleSheet, View} from 'react-native';
+import {CurrencyLogo} from '../../components/CurrencyLogo';
 import {Header} from '../../components/Header';
 import {Text} from '../../components/Text';
 import {BorderRadius, Colors, Spacing} from '../../constants';
@@ -12,9 +13,7 @@ export const CardHeader = () => (
     <Header title={'Debit Card'} />
     <Text style={styles.balanceDescription}>Available balance</Text>
     <View style={{flexDirection: 'row', alignItems: 'center'}}>
-      <View style={styles.balanceContainer}>
-        <Text>$$</Text>
-      </View>
+      <CurrencyLogo />
       <Text weight="bold" size="l" varient="light">
         {BALANCE}
       </Text>
