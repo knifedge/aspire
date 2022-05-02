@@ -25,6 +25,7 @@ const DummyScreen2 = () => <PlaceHolder />;
 
 const Tabs = () => (
   <Tab.Navigator
+    initialRouteName={ScreenNames.CardSettings}
     screenOptions={{
       headerShown: false,
       tabBarActiveTintColor: Colors.Secondary,

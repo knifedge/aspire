@@ -21,4 +21,8 @@
 - Goto project root
 - run `yarn android`
 
-### notes: required `node` version is `14.17.0`
+### notes:
+
+- required: `node` version is `14.17.0`
+- required: latest `xcode` and `android studio`
+- required: `cocopods`
