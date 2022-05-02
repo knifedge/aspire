@@ -1,17 +1,23 @@
-import React, {useContext} from 'react';
+import useAxios from 'axios-hooks';
+import React, {useContext, useEffect} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {DebitContext} from '.';
 import {AppContext} from '../../../App';
 import {Text} from '../../components/Text';
 import {BorderRadius, Colors, Spacing} from '../../constants';
+import {Endpoint} from '../../services/endpoint';
 
 export const ExpenseSummary = () => {
+  const [{data, loading, error}] = useAxios(Endpoint.spendLimit);
   const {isSpendLimitSet}: any = useContext(DebitContext);
   const {debitSpendLimit} = useContext(AppContext);
 
-  if (!isSpendLimitSet) {
+  useEffect(() => {}, [data]);
+
+  if (!isSpendLimitSet || loading || error) {
     return <></>;
   }
+
   return (
     <View style={{top: -Spacing.xl}}>
       <View style={styles.header}>

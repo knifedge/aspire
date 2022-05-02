@@ -12,8 +12,10 @@ import {NavigationContainer} from '@react-navigation/native';
 import React, {createContext, useState} from 'react';
 import {initialState} from './src/initialState';
 import RegisteredScreens from './src/navigation';
+import {createAxiosInstance} from './src/services/request';
 
 export const AppContext: any = createContext(initialState);
+createAxiosInstance();
 
 const App = () => {
   const [debitSpendLimit, setDebitSpendLimit] = useState(345);
