@@ -5,7 +5,6 @@ import React, {useContext, useState} from 'react';
 import {
   Dimensions,
   Image,
-  Keyboard,
   Pressable,
   StyleSheet,
   TextInput,
@@ -13,20 +12,32 @@ import {
 } from 'react-native';
 import {AppContext} from '../../../App';
 import {Button} from '../../components/Button';
+import ContentWrapper from '../../components/ContentWrapper';
 import {CurrencyLogo} from '../../components/CurrencyLogo';
 import {Header} from '../../components/Header';
 import {Text} from '../../components/Text';
+import ToolTip from '../../components/ToolTip';
 import ViewWrapper from '../../components/ViewWrapper';
-import {BorderRadius, Colors, IconSize, Spacing} from '../../constants';
+import {
+  BorderRadius,
+  Colors,
+  IconSize,
+  MAX_LIMIT,
+  Spacing,
+} from '../../constants';
 const {height, width} = Dimensions.get('window');
 
-const MAX_LIMIT = 5000;
 const LimitSetter = () => {
   const navigation: any = useNavigation();
   //TODO: accept only number from the input field.
 
   const [limit, setLimit] = useState<any>(MAX_LIMIT);
   const {setDebitSpendLimit} = useContext(AppContext);
+
+  function handleSave() {
+    setDebitSpendLimit(limit);
+    navigation.goBack();
+  }
 
   return (
     <ViewWrapper>
@@ -43,48 +54,45 @@ const LimitSetter = () => {
           title={'Spending Limit'}
         />
       </View>
-      <Pressable
-        style={styles.scrollContainer}
-        onPress={() => {
-          Keyboard.dismiss();
-        }}>
-        <View>
-          <Text
-            style={{marginVertical: Spacing.m}}
-            varient="dark"
-            weight="bold">
-            Set a weekly debit card spending limit
-          </Text>
-        </View>
-        <View>
-          <TextInput
-            value={limit}
-            style={styles.textInput}
-            placeholder={limit.toString()}
-            onChangeText={text => {
-              setLimit(text);
-            }}
-            keyboardType="number-pad"
-          />
-          <CurrencyLogo
-            style={{
-              position: 'absolute',
-              top: Spacing.xs,
-            }}
-          />
-        </View>
+      <ContentWrapper>
+        <>
+          <View>
+            <Text
+              style={{marginVertical: Spacing.m}}
+              varient="dark"
+              weight="bold">
+              Set a weekly debit card spending limit
+            </Text>
+          </View>
+          <View>
+            <TextInput
+              value={limit}
+              style={styles.textInput}
+              placeholder={limit.toString()}
+              onChangeText={text => {
+                setLimit(text);
+              }}
+              keyboardType="number-pad"
+            />
+            <CurrencyLogo
+              style={{
+                position: 'absolute',
+                top: Spacing.xs,
+              }}
+            />
+          </View>
 
-        <Text style={{marginVertical: Spacing.l}} varient="grey">
-          Here weekly means the last 7 days - not the calendar week
-        </Text>
-      </Pressable>
+          <Text style={{marginVertical: Spacing.l}} varient="grey">
+            Here weekly means the last 7 days - not the calendar week
+          </Text>
+        </>
+      </ContentWrapper>
       <Button
         title="Save"
         disabled={Number.isInteger(limit)}
-        onPress={() => {
-          setDebitSpendLimit(limit);
-        }}
+        onPress={handleSave}
       />
+      {limit > MAX_LIMIT ? <ToolTip /> : <></>}
     </ViewWrapper>
   );
 };
@@ -106,6 +114,7 @@ const styles = StyleSheet.create({
     height: 40,
     borderBottomWidth: 1,
     paddingLeft: '16%',
+    color: Colors.Dark,
   },
   balanceContainer: {
     alignItems: 'center',

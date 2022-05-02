@@ -11,9 +11,10 @@ import {
   Transfercolored,
 } from '../../assets/icons';
 import DebitCard from '../../components/Card';
+import ContentWrapper from '../../components/ContentWrapper';
 import {Text} from '../../components/Text';
 import Toggle from '../../components/Toggle';
-import {Colors, IconSize} from '../../constants';
+import {Colors, IconSize, Spacing} from '../../constants';
 import {ScreenNames} from '../../screenenum';
 import {ExpenseSummary} from './ExpenseSummary';
 const {height, width} = Dimensions.get('window');
@@ -85,7 +86,7 @@ const CardInfo = () => {
         }}
         style={styles.menuItem}>
         {item.icon()}
-        <View style={{marginHorizontal: 16}}>
+        <View style={{marginHorizontal: Spacing.l}}>
           <Text size="s" varient="dark">
             {item.title}
           </Text>
@@ -93,7 +94,7 @@ const CardInfo = () => {
             numberOfLines={2}
             size="xs"
             varient="grey"
-            style={{marginTop: 8, maxWidth: 230}}>
+            style={{marginTop: Spacing.xs, maxWidth: 230}}>
             {item.description}
           </Text>
         </View>
@@ -103,7 +104,7 @@ const CardInfo = () => {
   );
 
   return (
-    <View style={styles.scrollContainer}>
+    <ContentWrapper>
       <DebitCard style={{top: '-8%'}} />
       <ExpenseSummary />
       <FlatList
@@ -112,7 +113,7 @@ const CardInfo = () => {
         keyExtractor={item => item.title}
         renderItem={renderItems}
       />
-    </View>
+    </ContentWrapper>
   );
 };
 
@@ -134,8 +135,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   menuItem: {
-    height: 48,
-    marginBottom: 16,
+    height: 50,
+    marginVertical: Spacing.m,
     flexDirection: 'row',
     alignItems: 'center',
   },

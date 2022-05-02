@@ -5,5 +5,5 @@ export enum ScreenNames {
   LimitSetting = 'LimitSetting',
   DummyScreen1 = 'Payments',
   DummyScreen2 = 'Credit',
-  DummyScreen3 = 'Profile',
+  Profile = 'Profile',
 }

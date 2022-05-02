@@ -1,10 +1,9 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {memo, useState} from 'react';
-import {Dimensions, ScrollView} from 'react-native';
+import {ScrollView} from 'react-native';
 import ViewWrapper from '../../components/ViewWrapper';
 import CardInfo from './CardInfo';
 import {CardHeader} from './Header';
-const {height, width} = Dimensions.get('window');
 
 interface IDebitToggles {
   isSpendLimitSet: boolean;

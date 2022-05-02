@@ -8,6 +8,7 @@ import {Colors, IconSize} from '../constants';
 import {ScreenNames} from '../screenenum';
 import CardSetting from '../screens/debitCard';
 import LimitSetter from '../screens/limitSetting';
+import Profile from '../screens/Profile';
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
@@ -21,7 +22,6 @@ const PlaceHolder = () => (
 const DummyScreen0 = () => <PlaceHolder />;
 const DummyScreen1 = () => <PlaceHolder />;
 const DummyScreen2 = () => <PlaceHolder />;
-const DummyScreen3 = () => <PlaceHolder />;
 
 const Tabs = () => (
   <Tab.Navigator
@@ -61,8 +61,8 @@ const Tabs = () => (
       options={{
         tabBarIcon: () => <User style={{...IconSize.l}} />,
       }}
-      name={ScreenNames.DummyScreen3}
-      component={DummyScreen3}
+      name={ScreenNames.Profile}
+      component={Profile}
     />
   </Tab.Navigator>
 );

@@ -1,3 +1,5 @@
+export const MAX_LIMIT = 5000;
+
 export enum Colors {
   Primary = '#0C365A',
   Secondary = '#01D167',
