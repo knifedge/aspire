@@ -26,8 +26,8 @@ const CardNumber = ({showCardNumber}: {showCardNumber: boolean}) => {
     }
     return (
       <View style={{flexDirection: 'row', marginRight: 8}}>
-        {Array.from({length: 4}, (v, i) => i).map(() => (
-          <Dot />
+        {Array.from({length: 4}, (v, i) => i).map((value: any) => (
+          <Dot key={value} />
         ))}
       </View>
     );
