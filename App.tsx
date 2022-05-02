@@ -22,7 +22,6 @@ const App = () => {
   const [debitSpendLimit, setDebitSpendLimit] = useState(345);
   const {data} = useUser();
 
-  console.log(data);
   return (
     <NavigationContainer>
       <AppContext.Provider
