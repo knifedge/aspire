@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
@@ -10,6 +11,7 @@
 
 import {NavigationContainer} from '@react-navigation/native';
 import React, {createContext, useState} from 'react';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {initialState} from './src/initialState';
 import RegisteredScreens from './src/navigation';
 import {createAxiosInstance} from './src/services/request';
@@ -30,7 +32,9 @@ const App = () => {
           user: data,
           setDebitSpendLimit,
         }}>
-        <RegisteredScreens />
+        <GestureHandlerRootView style={{flex: 1}}>
+          <RegisteredScreens />
+        </GestureHandlerRootView>
       </AppContext.Provider>
     </NavigationContainer>
   );

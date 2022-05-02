@@ -1,6 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {memo, useState} from 'react';
-import {ScrollView} from 'react-native';
 import ViewWrapper from '../../components/ViewWrapper';
 import CardInfo from './CardInfo';
 import {CardHeader} from './Header';
@@ -23,16 +22,14 @@ const CardSetting = () => {
 
   return (
     <ViewWrapper>
-      <ScrollView>
-        <CardHeader />
-        <DebitContext.Provider
-          value={{
-            isSpendLimitSet,
-            toggleSpendLimit,
-          }}>
-          <CardInfo />
-        </DebitContext.Provider>
-      </ScrollView>
+      <CardHeader />
+      <DebitContext.Provider
+        value={{
+          isSpendLimitSet,
+          toggleSpendLimit,
+        }}>
+        <CardInfo />
+      </DebitContext.Provider>
     </ViewWrapper>
   );
 };
