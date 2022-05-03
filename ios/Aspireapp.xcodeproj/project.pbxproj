@@ -43,14 +43,14 @@
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-Aspireapp-AspireappTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Aspireapp-AspireappTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B4392A12AC88292D35C810B /* Pods-Aspireapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aspireapp.debug.xcconfig"; path = "Target Support Files/Pods-Aspireapp/Pods-Aspireapp.debug.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-Aspireapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aspireapp.release.xcconfig"; path = "Target Support Files/Pods-Aspireapp/Pods-Aspireapp.release.xcconfig"; sourceTree = "<group>"; };
-		5B14F74059F048CB9CB50AF3 /* AvenirNextLTPro-Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "AvenirNextLTPro-Bold.otf"; path = "../src/assets/Fonts/AvenirNextLTPro-Bold.otf"; sourceTree = "<group>"; };
+		5B14F74059F048CB9CB50AF3 /* AvenirNextLTPro-Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "AvenirNextLTPro-Bold.otf"; path = "../src/assets/Fonts/AvenirNextLTPro-Bold.otf"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-Aspireapp-AspireappTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aspireapp-AspireappTests.debug.xcconfig"; path = "Target Support Files/Pods-Aspireapp-AspireappTests/Pods-Aspireapp-AspireappTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-Aspireapp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Aspireapp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7E6224DB9F11403FB493DB87 /* AvenirNextLTPro-It.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "AvenirNextLTPro-It.otf"; path = "../src/assets/Fonts/AvenirNextLTPro-It.otf"; sourceTree = "<group>"; };
+		7E6224DB9F11403FB493DB87 /* AvenirNextLTPro-It.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "AvenirNextLTPro-It.otf"; path = "../src/assets/Fonts/AvenirNextLTPro-It.otf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Aspireapp/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-Aspireapp-AspireappTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aspireapp-AspireappTests.release.xcconfig"; path = "Target Support Files/Pods-Aspireapp-AspireappTests/Pods-Aspireapp-AspireappTests.release.xcconfig"; sourceTree = "<group>"; };
-		9FEE5987B6F245B9907B176E /* AvenirNextLTPro-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "AvenirNextLTPro-Regular.otf"; path = "../src/assets/Fonts/AvenirNextLTPro-Regular.otf"; sourceTree = "<group>"; };
-		AF6872DF2CAF44F5B5D12CB5 /* Metropolis-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Metropolis-Regular.otf"; path = "../src/assets/Fonts/Metropolis-Regular.otf"; sourceTree = "<group>"; };
+		9FEE5987B6F245B9907B176E /* AvenirNextLTPro-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "AvenirNextLTPro-Regular.otf"; path = "../src/assets/Fonts/AvenirNextLTPro-Regular.otf"; sourceTree = "<group>"; };
+		AF6872DF2CAF44F5B5D12CB5 /* Metropolis-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Metropolis-Regular.otf"; path = "../src/assets/Fonts/Metropolis-Regular.otf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -166,7 +166,6 @@
 				AF6872DF2CAF44F5B5D12CB5 /* Metropolis-Regular.otf */,
 			);
 			name = Resources;
-			path = "";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -456,6 +455,7 @@
 			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-Aspireapp-AspireappTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = JT25QFGB66;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -521,7 +521,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.test;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jam.ios.develop;
 				PRODUCT_NAME = Aspireapp;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -536,7 +536,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = LYRUS4XKYF;
+				DEVELOPMENT_TEAM = JT25QFGB66;
 				INFOPLIST_FILE = Aspireapp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -547,7 +547,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.aspire;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jam.ios.develop;
 				PRODUCT_NAME = Aspireapp;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
