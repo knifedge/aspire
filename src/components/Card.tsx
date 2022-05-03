@@ -76,7 +76,7 @@ const Card = ({style}: {style: ViewStyle}) => {
         <CardNumber showCardNumber={showCardNumber} />
         <View style={styles.expiry}>
           <Text>Thru: 12/20</Text>
-          <Text>CVV: 456</Text>
+          <Text style={{marginHorizontal: Spacing.s}}>CVV: 456</Text>
         </View>
         <Visa style={styles.visaLogo} />
       </View>
