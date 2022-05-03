@@ -30,7 +30,10 @@ export const ExpenseSummary = () => {
       <View style={styles.header}>
         <Text varient="dark">Debit card spending limit</Text>
         <Text varient="secondary">
-          ${Math.round(debitSpendLimit)}{' '}
+          $
+          {isNaN(Math.round(debitSpendLimit))
+            ? '0'
+            : Math.round(debitSpendLimit)}{' '}
           <Text varient="grey">| ${MAX_LIMIT}</Text>
         </Text>
       </View>
