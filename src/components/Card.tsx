@@ -8,6 +8,7 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
+import {useSelector} from 'react-redux';
 import {Aspire, Eye, Hide, Visa} from '../assets/icons';
 import {BorderRadius, Colors, IconSize, Spacing} from '../constants';
 import Dot from './Dot';
@@ -64,6 +65,8 @@ const CardNumber = ({showCardNumber}: {showCardNumber: boolean}) => {
 };
 
 const Card = ({style}: {style: ViewStyle}) => {
+  const {user} = useSelector(state => state.globalReducer);
+
   const [showCardNumber, toggleCardNumberVisiblity] = useState(false);
 
   return (
@@ -71,12 +74,23 @@ const Card = ({style}: {style: ViewStyle}) => {
       <View style={[styles.container]}>
         <Aspire style={styles.aspireLogo} />
         <Text size="l" weight="bold">
-          {CARD_NAME}
+          {user?.cardInfo?.name}
         </Text>
         <CardNumber showCardNumber={showCardNumber} />
         <View style={styles.expiry}>
-          <Text>Thru: 12/20</Text>
-          <Text style={{marginHorizontal: Spacing.s}}>CVV: 456</Text>
+          <Text>Thru: {user?.cardInfo?.expiry}</Text>
+          <Text style={{marginHorizontal: Spacing.m}}>
+            CVV:
+            {showCardNumber ? (
+              user?.cardInfo?.cvv
+            ) : (
+              <View style={styles.hideExpiry}>
+                <Dot />
+                <Dot />
+                <Dot />
+              </View>
+            )}
+          </Text>
         </View>
         <Visa style={styles.visaLogo} />
       </View>
@@ -137,7 +151,9 @@ const styles = StyleSheet.create({
     width: 130,
     justifyContent: 'space-between',
   },
-
+  hideExpiry: {
+    flexDirection: 'row',
+  },
   container: {
     height: 220,
     width: width / 1.15,

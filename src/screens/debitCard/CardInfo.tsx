@@ -1,8 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import {useNavigation} from '@react-navigation/native';
-import React, {memo, useContext} from 'react';
+import React, {memo, useState} from 'react';
 import {Dimensions, FlatList, Pressable, StyleSheet, View} from 'react-native';
-import {DebitContext} from '.';
 import {
   Card,
   Deactivate,
@@ -15,7 +14,7 @@ import ContentWrapper from '../../components/ContentWrapper';
 import {Text} from '../../components/Text';
 import Toggle from '../../components/Toggle';
 import {Colors, IconSize, Spacing} from '../../constants';
-import {ScreenNames} from '../../screenenum';
+import {ScreenNames} from '../../screenEnum';
 import {ExpenseSummary} from './ExpenseSummary';
 const {height, width} = Dimensions.get('window');
 
@@ -28,7 +27,7 @@ interface ISectionItem {
 }
 
 const CardInfo = () => {
-  const {toggleSpendLimit}: any = useContext(DebitContext);
+  const [toggleSpendProgress, setToggleSpendProgress] = useState(true);
 
   const SECTIONS: Array<ISectionItem> = [
     {
@@ -45,8 +44,9 @@ const CardInfo = () => {
       description: 'You haven’t set any spending limit on card',
       rightIcon: () => (
         <Toggle
+          on={toggleSpendProgress}
           onToggle={() => {
-            toggleSpendLimit();
+            setToggleSpendProgress(!toggleSpendProgress);
           }}
         />
       ),
@@ -56,7 +56,7 @@ const CardInfo = () => {
       icon: () => <Transfer style={{...IconSize.xl}} />,
       title: 'Freeze card',
       description: 'Your debit card is currently active',
-      rightIcon: () => <Toggle onToggle={() => {}} />,
+      rightIcon: () => <Toggle on={false} onToggle={() => {}} />,
     },
     {
       id: 4,
@@ -106,7 +106,7 @@ const CardInfo = () => {
   return (
     <ContentWrapper>
       <DebitCard style={{top: '-8%'}} />
-      <ExpenseSummary />
+      <ExpenseSummary visible={toggleSpendProgress} />
       <FlatList
         data={SECTIONS}
         scrollEnabled={false}

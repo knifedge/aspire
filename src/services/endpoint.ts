@@ -1,5 +1,5 @@
 export enum Endpoint {
-  user = '/users/',
-  spendLimit = '/users/spend-limit',
-  balance = '/users/balance',
+  user = '/api/user/',
+  spendLimit = '/api/users/spend-limit',
+  balance = '/api/users/balance',
 }

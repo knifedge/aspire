@@ -1,27 +1,19 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {StyleSheet, View} from 'react-native';
-import {DebitContext} from '.';
-import {AppContext} from '../../../App';
+import {useSelector} from 'react-redux';
 import {Text} from '../../components/Text';
-import {BorderRadius, Colors, MAX_LIMIT, Spacing} from '../../constants';
-import {useSpend} from '../../services/user';
+import {BorderRadius, Colors, Spacing} from '../../constants';
 
-export const ExpenseSummary = () => {
+export const ExpenseSummary = ({visible = true}: {visible: boolean}) => {
+  const {user} = useSelector((state: any) => state.globalReducer);
+
   const [progress, setProgress] = useState<number>(0);
-  const {isSpendLimitSet}: any = useContext(DebitContext);
-  const {debitSpendLimit, setDebitSpendLimit} = useContext(AppContext);
-  const {data} = useSpend();
 
   useEffect(() => {
-    setProgress((Math.round(debitSpendLimit) / MAX_LIMIT) * 100);
-  }, [debitSpendLimit]);
+    setProgress((Math.round(user.spendAmount) / user.spendLimit) * 100);
+  }, [user.spendLimit, user.spendAmount]);
 
-  useEffect(() => {
-    setDebitSpendLimit(data?.limit);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data]);
-
-  if (!isSpendLimitSet) {
+  if (!visible) {
     return <></>;
   }
 
@@ -30,11 +22,8 @@ export const ExpenseSummary = () => {
       <View style={styles.header}>
         <Text varient="dark">Debit card spending limit</Text>
         <Text varient="secondary">
-          $
-          {isNaN(Math.round(debitSpendLimit))
-            ? '0'
-            : Math.round(debitSpendLimit)}{' '}
-          <Text varient="grey">| ${MAX_LIMIT}</Text>
+          ${user.spendAmount ? user.spendAmount : 0} &nbsp;
+          <Text varient="grey">| ${user.spendLimit}</Text>
         </Text>
       </View>
       <View style={styles.progressContainer}>

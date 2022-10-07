@@ -1,16 +1,16 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {Dimensions, StyleSheet, View} from 'react-native';
+import {useSelector} from 'react-redux';
 import {CurrencyLogo} from '../../components/CurrencyLogo';
 import {Header} from '../../components/Header';
 import {Text} from '../../components/Text';
 import {BorderRadius, Colors, Spacing} from '../../constants';
-import {useBalance} from '../../services/user';
 const {height, width} = Dimensions.get('window');
 
 export const CardHeader = () => {
-  let {data, loading} = useBalance();
-  //call balance hook
+  const {user} = useSelector((state: any) => state.globalReducer);
+
   return (
     <View style={{padding: Spacing.l}}>
       <Header title={'Debit Card'} />
@@ -18,7 +18,7 @@ export const CardHeader = () => {
       <View style={{flexDirection: 'row', alignItems: 'center'}}>
         <CurrencyLogo />
         <Text weight="bold" size="l" varient="light">
-          {loading ? 'Loading ....' : Math.round(data.balance)}
+          {user.currentBalance}
         </Text>
       </View>
     </View>

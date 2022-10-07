@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react-hooks/exhaustive-deps */
 import {useNavigation} from '@react-navigation/native';
-import React, {useContext, useState} from 'react';
+import React, {useState} from 'react';
 import {
   Dimensions,
   Image,
@@ -10,7 +10,7 @@ import {
   TextInput,
   View,
 } from 'react-native';
-import {AppContext} from '../../../App';
+import {useDispatch, useSelector} from 'react-redux';
 import {Button} from '../../components/Button';
 import ContentWrapper from '../../components/ContentWrapper';
 import {CurrencyLogo} from '../../components/CurrencyLogo';
@@ -28,14 +28,18 @@ import {
 const {height, width} = Dimensions.get('window');
 
 const LimitSetter = () => {
+  const {user} = useSelector((state: any) => state.globalReducer);
+  const dispatch = useDispatch();
   const navigation: any = useNavigation();
   //TODO: accept only number from the input field.
 
-  const [limit, setLimit] = useState<any>(MAX_LIMIT);
-  const {setDebitSpendLimit} = useContext(AppContext);
+  const [limit, setLimit] = useState<any>(user.spendLimit);
 
   function handleSave() {
-    setDebitSpendLimit(limit);
+    dispatch({
+      type: 'SET_SPEND_LIMIT',
+      payload: limit,
+    });
     navigation.goBack();
   }
 

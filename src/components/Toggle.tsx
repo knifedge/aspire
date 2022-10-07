@@ -2,8 +2,14 @@ import React, {memo, useState} from 'react';
 import {Pressable, StyleSheet, View} from 'react-native';
 import {Colors} from '../constants';
 
-const Toggle = ({onToggle}: {onToggle?: () => void}) => {
-  const [isOn, setToggle] = useState(false);
+const Toggle = ({
+  on = true,
+  onToggle,
+}: {
+  on: boolean;
+  onToggle?: () => void;
+}) => {
+  const [isOn, setToggle] = useState(on);
 
   let style = !isOn ? {left: 2} : {right: 2};
 

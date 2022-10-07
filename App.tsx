@@ -10,33 +10,21 @@
  */
 
 import {NavigationContainer} from '@react-navigation/native';
-import React, {createContext, useState} from 'react';
+import React from 'react';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
-import {initialState} from './src/initialState';
+import {Provider} from 'react-redux';
 import RegisteredScreens from './src/navigation';
-import {createAxiosInstance} from './src/services/request';
-import {useUser} from './src/services/user';
-
-export const AppContext: any = createContext(initialState);
-createAxiosInstance();
+import {store} from './src/store/store';
 
 const App = () => {
-  const [debitSpendLimit, setDebitSpendLimit] = useState(345);
-  const {data} = useUser();
-
   return (
-    <NavigationContainer>
-      <AppContext.Provider
-        value={{
-          debitSpendLimit,
-          user: data,
-          setDebitSpendLimit,
-        }}>
+    <Provider store={store}>
+      <NavigationContainer>
         <GestureHandlerRootView style={{flex: 1}}>
           <RegisteredScreens />
         </GestureHandlerRootView>
-      </AppContext.Provider>
-    </NavigationContainer>
+      </NavigationContainer>
+    </Provider>
   );
 };
 

@@ -1,58 +1,45 @@
-import useAxios from 'axios-hooks';
+import {useEffect, useState} from 'react';
+import {useDispatch} from 'react-redux';
 import {Endpoint} from './endpoint';
 
-export function useUser() {
-  const [{data, loading, error}] = useAxios(Endpoint.user);
-
-  if (error) {
-    return {
-      data: {
-        firstName: 'Mark',
-        lastName: 'Henry',
-        email: 'markhenty@aspireapp.com',
-        image: 'https://img.icons8.com/stickers/100/000000/user.png',
-      },
-      loading: false,
-    };
-  }
-
-  return {
-    data,
-    loading,
-    error,
-  };
+interface User {
+  firstName: string;
+  lastName: string;
+  email: string;
+  image: string;
+  cardInfo: Object;
 }
+export function useGetUser() {
+  const [loading, setLoading] = useState(false);
+  const [user, setUser] = useState<User | null>(null);
+  const [error, setError] = useState({});
+  const dispatch = useDispatch();
 
-export function useSpend() {
-  const [{data, loading, error}] = useAxios(Endpoint.spendLimit);
-
-  if (error) {
-    return {
-      data: {balance: Math.random() * 100},
-      loading: false,
-    };
-  }
+  useEffect(() => {
+    setLoading(true);
+    fetch(Endpoint.user)
+      .then(response => response.json())
+      .then(response => {
+        if (response) {
+          setUser(response.user);
+          dispatch({
+            type: 'STORE_USER',
+            payload: response.user,
+          });
+          setLoading(false);
+          return;
+        }
+      })
+      .catch(e => {
+        setLoading(false);
+        setError(e);
+      });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return {
-    data,
-    loading,
+    data: user,
     error,
-  };
-}
-
-export function useBalance() {
-  const [{data, loading, error}] = useAxios(Endpoint.balance);
-
-  if (error) {
-    return {
-      data: {balance: Math.random() * 100},
-      loading: false,
-    };
-  }
-
-  return {
-    data,
     loading,
-    error,
   };
 }

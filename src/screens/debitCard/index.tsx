@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, {memo, useState} from 'react';
+import React, {memo} from 'react';
 import ViewWrapper from '../../components/ViewWrapper';
 import CardInfo from './CardInfo';
 import {CardHeader} from './Header';
@@ -14,22 +14,10 @@ export const DebitContext = React.createContext<IDebitToggles | null>({
 });
 
 const CardSetting = () => {
-  const [isSpendLimitSet, toggleLimit] = useState(false);
-
-  function toggleSpendLimit() {
-    toggleLimit(!isSpendLimitSet);
-  }
-
   return (
     <ViewWrapper>
       <CardHeader />
-      <DebitContext.Provider
-        value={{
-          isSpendLimitSet,
-          toggleSpendLimit,
-        }}>
-        <CardInfo />
-      </DebitContext.Provider>
+      <CardInfo />
     </ViewWrapper>
   );
 };

@@ -1,15 +1,16 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {FlatList, Image, StyleSheet, View} from 'react-native';
-import {AppContext} from '../../../App';
+import {useSelector} from 'react-redux';
 import ContentWrapper from '../../components/ContentWrapper';
 import {Header} from '../../components/Header';
 import {Text} from '../../components/Text';
 import ViewWrapper from '../../components/ViewWrapper';
 import {BorderRadius, Colors, Spacing} from '../../constants';
-import {ScreenNames} from '../../screenenum';
+import {ScreenNames} from '../../screenEnum';
 
 export default function Profile() {
-  const {user} = useContext(AppContext);
+  const {user} = useSelector((state: any) => state.globalReducer);
+
   const SECTIONS = [
     {
       title: user?.firstName,

@@ -5,10 +5,11 @@ import {Credit, Home, Pay, Payments, User} from '../assets/icons';
 import {Text} from '../components/Text';
 import ViewWrapper from '../components/ViewWrapper';
 import {Colors, IconSize} from '../constants';
-import {ScreenNames} from '../screenenum';
+import {ScreenNames} from '../screenEnum';
 import CardSetting from '../screens/debitCard';
 import LimitSetter from '../screens/limitSetting';
 import Profile from '../screens/Profile';
+import {useGetUser} from '../services/user';
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
@@ -33,34 +34,59 @@ const Tabs = () => (
     <Tab.Screen
       name={ScreenNames.Home}
       options={{
-        tabBarIcon: () => <Home style={{...IconSize.l}} />,
+        tabBarIcon: ({focused}) => (
+          <Home
+            fill={focused ? Colors.Secondary : Colors.Grey}
+            style={{...IconSize.l}}
+          />
+        ),
       }}
       component={DummyScreen0}
     />
     <Tab.Screen
       options={{
-        tabBarIcon: () => <Pay style={{...IconSize.l}} />,
+        tabBarIcon: ({focused}) => (
+          <Pay
+            fill={focused ? Colors.Secondary : Colors.Grey}
+            style={{...IconSize.l}}
+          />
+        ),
       }}
       name={ScreenNames.CardSettings}
       component={CardSetting}
     />
     <Tab.Screen
       options={{
-        tabBarIcon: () => <Payments style={{...IconSize.l}} />,
+        tabBarIcon: ({focused}) => (
+          <Payments
+            fill={focused ? Colors.Secondary : Colors.Grey}
+            style={{...IconSize.l}}
+          />
+        ),
       }}
       name={ScreenNames.DummyScreen1}
       component={DummyScreen1}
     />
     <Tab.Screen
       options={{
-        tabBarIcon: () => <Credit style={{...IconSize.l}} />,
+        tabBarIcon: ({focused}) => (
+          <Credit
+            fill={focused ? Colors.Secondary : Colors.Grey}
+            style={{...IconSize.l}}
+          />
+        ),
       }}
       name={ScreenNames.DummyScreen2}
       component={DummyScreen2}
     />
     <Tab.Screen
       options={{
-        tabBarIcon: () => <User style={{...IconSize.l}} />,
+        tabBarIcon: ({focused}) => (
+          <User
+            fill={focused ? Colors.Secondary : Colors.Grey}
+            style={{...IconSize.l}}
+          />
+        ),
       }}
       name={ScreenNames.Profile}
       component={Profile}
@@ -68,13 +94,17 @@ const Tabs = () => (
   </Tab.Navigator>
 );
 
-const RegisteredScreens = () => (
-  <Stack.Navigator
-    screenOptions={{headerShown: false}}
-    initialRouteName={ScreenNames.Main}>
-    <Stack.Screen name={ScreenNames.Main} component={Tabs} />
-    <Stack.Screen name={ScreenNames.LimitSetting} component={LimitSetter} />
-  </Stack.Navigator>
-);
+const RegisteredScreens = () => {
+  useGetUser();
+
+  return (
+    <Stack.Navigator
+      screenOptions={{headerShown: false}}
+      initialRouteName={ScreenNames.Main}>
+      <Stack.Screen name={ScreenNames.Main} component={Tabs} />
+      <Stack.Screen name={ScreenNames.LimitSetting} component={LimitSetter} />
+    </Stack.Navigator>
+  );
+};
 
 export default RegisteredScreens;
